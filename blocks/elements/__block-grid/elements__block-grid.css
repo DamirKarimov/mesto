@@ -8,7 +8,7 @@
 }
 
 .elements__block-grid:hover {
-  opacity: .6; 
+  opacity: .6;
   transition-property: opacity;
   transition-duration: .2s;
   transition-timing-function: linear;
