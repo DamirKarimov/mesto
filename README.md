@@ -16,5 +16,6 @@
   - методология БЭМ
   - Javascript
 
+Ссылка на проект: https://damirkarimov.github.io/mesto/
 
 
