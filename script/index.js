@@ -54,24 +54,19 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
 
-function showImage() {
-  popupShowImage.classList.toggle('popup_opened-image');
-}
-popupСloseImage.addEventListener('click', showImage);
-
-
 function showPopup (popapAddClass){
   popapAddClass.classList.toggle('popup_opened');
 }
 
 profileBtnEdit.addEventListener('click', () => {showPopup(popupEdit)});
 popupCloseEdit.addEventListener('click', () => {showPopup(popupEdit)});
+popupEditSubmit.addEventListener('click', () => {showPopup(popupEdit)});
 
 btnAddImage.addEventListener('click', () => {showPopup(popupAdd)});
 popupCloseAdd.addEventListener('click', () => {showPopup(popupAdd)});
-
-popupEditSubmit.addEventListener('click', () => {showPopup(popupEdit)});
 popupAddSubmit.addEventListener('click', () => {showPopup(popupAdd)});
+
+popupСloseImage.addEventListener('click', () => {showPopup(popupShowImage)});
 
 
 const popupContainerEdit = document.querySelector('.popup__container_edit');
@@ -89,7 +84,7 @@ function handleProfileFormSubmit (evt) {
 popupForm.addEventListener('submit', handleProfileFormSubmit);
 
 function openShowImage(item) {
-  showImage();
+  showPopup(popupShowImage);
   popupImage.alt = item.name;
   popupImage.src = item.link;
   popupImageDescription.textContent = item.name;
