@@ -1,0 +1,29 @@
+.elements__urn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  top: 26px;
+  right: 22px;
+  position: absolute;
+  width: max-content;
+  height: 19px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.elements__urn:nth-child(1){
+  object-fit: cover;
+  width: 18px;
+}
+
+.elements__urn:nth-child(2){
+  object-fit: cover;
+  width: 15.4px;
+}
+
+.elements__urn:hover {
+  opacity: .8;
+}

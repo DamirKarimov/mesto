@@ -1,0 +1,54 @@
+.elements{
+  max-width: 880px;
+  width: 100%;
+  margin-top: 46px;
+  display: grid;
+  gap: 17px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: max-content;
+  grid-template-areas:
+  "block-one block-two block-three"
+  "block-four block-five block-six";
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .elements{
+    display: grid;
+    justify-items: center;
+    gap: 17px;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+    "block-one"
+    "block-two"
+    "block-three"
+    "block-four"
+    "block-five"
+    "block-six";
+  }
+}
+
+
+.elements :nth-child(1) {
+  grid-area: block-one;
+}
+
+.elements :nth-child(2) {
+  grid-area: block-two;
+}
+
+.elements :nth-child(3) {
+  grid-area: block-three;
+}
+
+.elements :nth-child(4) {
+  grid-area: block-four;
+}
+
+.elements :nth-child(5) {
+  grid-area: block-five;
+}
+
+.elements :nth-child(6) {
+  grid-area: block-six;
+}

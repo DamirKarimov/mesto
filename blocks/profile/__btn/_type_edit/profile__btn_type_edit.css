@@ -1,0 +1,16 @@
+.profile__btn_type_edit {
+  margin: 37px 0 0 18px;
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+  background-image: url(../../../../images/Vector.png);
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .profile__btn_type_edit {
+    margin: 28px 0 0 10px;
+  }
+}

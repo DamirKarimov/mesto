@@ -1,0 +1,16 @@
+.elements__block-grid {
+  position: relative;
+  max-width: 282px;
+  min-width: 200px;
+  width: 100%;
+  border-radius: 5%;
+  background-color: #ffffff;
+}
+
+.elements__block-grid:hover {
+  opacity: .6; 
+  transition-property: opacity;
+  transition-duration: .2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
