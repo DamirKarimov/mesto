@@ -29,6 +29,8 @@ const popup = document.querySelector('.popup');
 const popupForm = document.querySelector('.popup__form');
 const profileBtnEdit = document.querySelector('.profile__btn_type_edit');
 const btnAddImage = document.querySelector('.profile__btn_type_add');
+const profileTName = document.querySelector('.profile__title');
+const profileProfession = document.querySelector('.profile__subtitle');
 
 const popupCloseEdit = document.querySelector('.popup__close-edit');
 const popupCloseAdd = document.querySelector('.popup__close-add');
@@ -46,6 +48,7 @@ const popupInputLinkAdd = document.querySelector('.popup__input_link-add');
 
 const popupFormAdd = document.querySelector('.popup__form-add');
 const popupContainerAdd = document.querySelector('.popup__container_add');
+const popupContainerImage = document.querySelector('.popup__container-image')
 
 const popupShowImage = document.querySelector('.popup_show-image');
 const popupImageDescription = document.querySelector('.popup__image-description');
@@ -54,19 +57,35 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
 
-function showPopup (popapAddClass){
-  popapAddClass.classList.toggle('popup_opened');
+function showPopup (popapName){
+  popapName.classList.add('popup_opened');
 }
 
-profileBtnEdit.addEventListener('click', () => {showPopup(popupEdit)});
-popupCloseEdit.addEventListener('click', () => {showPopup(popupEdit)});
-popupEditSubmit.addEventListener('click', () => {showPopup(popupEdit)});
+function closePopup (popapName){
+  popapName.classList.remove('popup_opened');
+}
+
+function profiledithadler(){
+  nameInput.value =  profileTName.textContent;
+  jobInput.value = profileProfession.textContent;
+}
+
+profileBtnEdit.addEventListener('click', () => {
+  showPopup(popupEdit);
+  profiledithadler();
+});
+
+
+popupCloseEdit.addEventListener('click', () => { closePopup(popupEdit)});
+
+popupEditSubmit.addEventListener('click', () => {closePopup(popupEdit)});
 
 btnAddImage.addEventListener('click', () => {showPopup(popupAdd)});
-popupCloseAdd.addEventListener('click', () => {showPopup(popupAdd)});
-popupAddSubmit.addEventListener('click', () => {showPopup(popupAdd)});
+popupCloseAdd.addEventListener('click', () => {closePopup(popupAdd)});
+popupAddSubmit.addEventListener('click', () => {closePopup(popupAdd)});
 
-popupСloseImage.addEventListener('click', () => {showPopup(popupShowImage)});
+popupImage.addEventListener('click', () => {showPopup(popupShowImage)});
+popupСloseImage.addEventListener('click', () => {closePopup(popupShowImage)});
 
 
 const popupContainerEdit = document.querySelector('.popup__container_edit');
@@ -145,7 +164,6 @@ evt.preventDefault();
 popupFormAdd.addEventListener('submit', handleAddCard);
 
 showCards();
-
 
 
 
