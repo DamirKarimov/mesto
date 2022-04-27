@@ -65,14 +65,14 @@ function closePopup (popapName){
   popapName.classList.remove('popup_opened');
 }
 
-function profilEditHadler(){
+function insertInputValues(){
   nameInput.value =  profileTName.textContent;
   jobInput.value = profileProfession.textContent;
 }
 
 profileBtnEdit.addEventListener('click', () => {
   showPopup(popupEdit);
-  profilEditHadler();
+  insertInputValues();
 });
 
 
