@@ -26,10 +26,18 @@ const initialCards = [
 ];
 
 const popup = document.querySelector('.popup');
+
+const popupContainerEdit = document.querySelector('.popup__container_edit');
+
 const popupForm = document.querySelector('.popup__form');
+const popupInput = document.querySelector('.popup__input');
+
+const popupNameInput = popupForm.querySelector('.popup__name-input');
+const popupJobInput = popupForm.querySelector('.popup__job-input');
+
 const profileBtnEdit = document.querySelector('.profile__btn_type_edit');
 const btnAddImage = document.querySelector('.profile__btn_type_add');
-const profileTName = document.querySelector('.profile__title');
+const profileName = document.querySelector('.profile__title');
 const profileProfession = document.querySelector('.profile__subtitle');
 
 const popupCloseEdit = document.querySelector('.popup__close-edit');
@@ -59,15 +67,36 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 
 function showPopup (popapName){
   popapName.classList.add('popup_opened');
+
+document.addEventListener('keydown', handleHotkey);
+document.addEventListener('mousedown', handleOverlayClick);
 }
 
-function closePopup (popapName){
-  popapName.classList.remove('popup_opened');
+function closePopup(popupName) {
+popupName.classList.remove('popup_opened');
+
+document.removeEventListener('keydown', handleHotkey);
+document.removeEventListener('click', handleOverlayClick);
+}
+
+function handleHotkey(event) {
+const activePopup = document.querySelector('.popup_opened');
+  if (activePopup && event.key === 'Escape') { 
+    closePopup(activePopup);
+  }
+}
+
+function handleOverlayClick(event) {
+const activePopup = document.querySelector('.popup_opened');
+
+  if (activePopup && event.target === activePopup ) {
+    closePopup(activePopup);
+  }
 }
 
 function insertInputValues(){
-  nameInput.value =  profileTName.textContent;
-  jobInput.value = profileProfession.textContent;
+  popupNameInput.value =  profileName.textContent;
+  popupJobInput.value = profileProfession.textContent;
 }
 
 profileBtnEdit.addEventListener('click', () => {
@@ -88,16 +117,66 @@ popupImage.addEventListener('click', () => {showPopup(popupShowImage)});
 popupСloseImage.addEventListener('click', () => {closePopup(popupShowImage)});
 
 
-const popupContainerEdit = document.querySelector('.popup__container_edit');
-const nameInput = document.querySelector('#name');
-const jobInput = document.querySelector('#description');
+/*function enableValidation(formConfig){
+
+  const form = document.querySelectorall(formConfig.formSelector);
+  form.forEach((formElement) => {
+    const inputs = formElement.querySelectorAll(formConfig.inputSelector);
+    const button = formElement.querySelector(config.buttonSelector); 
+  })
+
+   
+  
+  inputs.forEach((element) => {
+    element.addEventListener('input', (event) => handleFormInput(event, form, formConfig))
+  })
+
+  form.addEventListener('submit', (event) => handleformSubmit(event, form))
+  toggleButton(form, formConfig);
+}
+
+function toggleButton(form, formConfig){
+  const button = document.querySelector(formConfig.buttonSelector);
+  button.disabled = !form.checkValidity();
+
+  button.classList.toggle('popup_disabled', !form.checkValidity());
+}
+
+function handleformSubmit(event, form){
+  event.preventDefault();
+}
+
+function handleFormInput(event, form, formConfig) {
+  const input = event.target;
+  const errorNode = document.querySelector(`.${input.id}-error`);
+
+  if(input.validity.valid){
+    errorNode.textContent = '';
+  }else{
+    errorNode.textContent = input.validationMessage;
+  }
+  toggleButton(form, formConfig);
+}
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  buttonSelector: '.popup__btn-form',
+});
+
+enableValidation({
+  formSelector: '.popup__form-add',
+  inputSelector: '.popup__input_name-add',
+  buttonSelector: '.popup__submit-add',
+})
+*/
 
 
-function handleProfileFormSubmit (evt) {
-    evt.preventDefault();
+function handleProfileFormSubmit (event) {
+    event.preventDefault();
 
-    profileTitle.textContent = nameInput.value;
-    profileSubtitle.textContent = jobInput.value;
+    profileTitle.textContent = popupNameInput.value;
+    profileSubtitle.textContent = popupJobInput.value;
 }
 
 popupForm.addEventListener('submit', handleProfileFormSubmit);
@@ -108,6 +187,7 @@ function openShowImage(item) {
   popupImage.src = item.link;
   popupImageDescription.textContent = item.name;
 }
+
 
 const elementsBlockGrid = document.querySelector(".elements");
 const templateElem = document.querySelector('.template');
@@ -161,11 +241,8 @@ evt.preventDefault();
   popupFormAdd.reset();
 }
 
-popupFormAdd.addEventListener('submit', handleAddCard);
+popupFormAdd.addEventListener('submit', handleAddCard );
 
 showCards();
-
-
-
 
 

@@ -37,22 +37,71 @@
           <div class="popup__container popup__container_edit">
             <button type="button" class="popup__close-edit"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__form" name="form" action="index.html" method="post">
-              <input type="text" id="name" name="name" class="popup__input"  value="" placeholder="Имя">
-              <input type="text" id="description" name="description" class="popup__input"  value="" placeholder="Профессия">
-              <button type="submit" class="popup__submit-edit">Сохранить</button>
+
+            <form class="popup__form" name="form" action="index.html" method="post" novalidate>
+              
+              <input 
+                type="text" 
+                id="name-input" 
+                name="name" 
+                class="popup__input popup__name-input"  
+                placeholder="Имя" 
+                minlength="2" 
+                maxlength="40" 
+                required
+              >
+              <span class="popup__error-first name-input-error"></span>
+
+              <input 
+                type="text" 
+                id="job-input" 
+                name="description" 
+                class="popup__input popup__job-input"  
+                placeholder="Профессия" 
+                minlength="2" 
+                maxlength="200" 
+                required
+              >
+
+              <span class="popup__error-second job-input-error"></span>
+
+              <button type="submit" class="popup__btn-form popup__submit-edit">Сохранить</button>
             </form>
           </div>
         </div>
 
         <div class="popup popup_add">
-          <div class="popup__container popup__container_add ">
+          <div class="popup__container popup__container_add">
             <button type="button" class="popup__close-add"></button>
             <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form popup__form-add" name="form" action="index.html" method="post">
-              <input type="text" id="title" name="title" class="popup__input popup__input_name-add" placeholder="Название">
-              <input type="text" id="link" name="link" class="popup__input popup__input_link-add"  placeholder="Ссылка на картинку">
-              <button type="submit" class="popup__submit-add">Сохранить</button>
+
+            <form class="popup__form popup__form-add" name="form" action="index.html" method="post" novalidate>
+
+              <input 
+              type="text" 
+              id="title-input" 
+              name="title" 
+              class="popup__input popup__input_name-add" 
+              minlength="2" 
+              maxlength="40"
+              placeholder="Название"
+              required
+              >
+              <span class="popup__error-first title-input-error"></span>
+
+              <input 
+              type="url" 
+              id="link-input" 
+              name="link" 
+              class="popup__input popup__input_link-add"  
+              placeholder="Ссылка на картинку"
+              required
+              >
+
+              <span class="popup__error-second link-input-error"></span>
+
+              <button type="submit" class="popup__btn-form popup__submit-add">Сохранить</button>
+
             </form>
           </div>
         </div>
@@ -82,5 +131,6 @@
         </template>
 
         <script src="./script/index.js"></script>
+        <script src="./script/validate.js"></script>
     </body>
 </html>

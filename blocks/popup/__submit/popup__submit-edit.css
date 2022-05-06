@@ -1,4 +1,4 @@
-.popup__submit-edit {
+/*.popup__submit-edit {
   width: 358px;
   height: 50px;
   background: rgba(0,0,0,1);
@@ -19,6 +19,12 @@
   background: rgba(0,0,0,.8);
 }
 
+.popup_disabled {
+  background-color: #FFFFFF;
+  color:#C4C4C4;
+  border: 2px solid #C4C4C4;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .popup__submit-edit {
     width: 238px;
@@ -28,3 +34,4 @@
     margin: 45px 0 0 22px;
   }
 }
+*/

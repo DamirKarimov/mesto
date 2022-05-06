@@ -1,4 +1,5 @@
 .popup__form{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -6,7 +7,7 @@
 }
 
 .popup__form :nth-child(1){
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
