@@ -35,7 +35,7 @@
 
         <div class="popup popup_edit">
           <div class="popup__container popup__container_edit">
-            <button type="button" class="popup__close-edit"></button>
+            <button type="button" class="popup__close-edit popup__close"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
 
             <form class="popup__form" name="form" action="index.html" method="post" novalidate>
@@ -72,7 +72,7 @@
 
         <div class="popup popup_add">
           <div class="popup__container popup__container_add">
-            <button type="button" class="popup__close-add"></button>
+            <button type="button" class="popup__close-add popup__close"></button>
             <h3 class="popup__title">Новое место</h3>
 
             <form class="popup__form popup__form-add" name="form" action="index.html" method="post" novalidate>
@@ -108,7 +108,7 @@
 
         <div class="popup popup_show-image"> 
           <div class="popup__container-image">
-            <button type="button" class="popup__close-image"></button>
+            <button type="button" class="popup__close-image popup__close"></button>
             <img class="popup__image" src="#" alt=""> 
             <p class="popup__image-description"></p>
           </div>
@@ -129,8 +129,10 @@
             </div>
           </article>
         </template>
-
-        <script src="./script/index.js"></script>
+        
         <script src="./script/validate.js"></script>
+        <script src="./script/card.js"></script>
+        <script src="./script/index.js"></script>
+        
     </body>
 </html>

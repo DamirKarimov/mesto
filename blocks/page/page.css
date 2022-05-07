@@ -8,4 +8,5 @@
   background: #000000;
   margin: 0 auto;
   z-index: 20;
+  overflow-x: hidden;
 }

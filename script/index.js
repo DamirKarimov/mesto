@@ -1,31 +1,4 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const popup = document.querySelector('.popup');
+const popups = document.querySelectorAll('.popup')
 
 const popupContainerEdit = document.querySelector('.popup__container_edit');
 
@@ -64,12 +37,16 @@ const popupImageDescription = document.querySelector('.popup__image-description'
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
+const inputValueName = document.querySelector('.popup__input_name-add');
+const inputValueLink = document.querySelector('.popup__input_link-add');
+
 
 function showPopup (popapName){
   popapName.classList.add('popup_opened');
 
 document.addEventListener('keydown', handleHotkey);
 document.addEventListener('mousedown', handleOverlayClick);
+enableValidation(config);
 }
 
 function closePopup(popupName) {
@@ -80,19 +57,20 @@ document.removeEventListener('click', handleOverlayClick);
 }
 
 function handleHotkey(event) {
-const activePopup = document.querySelector('.popup_opened');
-  if (activePopup && event.key === 'Escape') { 
+
+  if (event.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened'); 
     closePopup(activePopup);
   }
 }
 
 function handleOverlayClick(event) {
-const activePopup = document.querySelector('.popup_opened');
-
-  if (activePopup && event.target === activePopup ) {
-    closePopup(activePopup);
+  if (event.target.classList.contains('popup_opened')) {
+    closePopup(event.target);
   }
 }
+
+
 
 function insertInputValues(){
   popupNameInput.value =  profileName.textContent;
@@ -115,61 +93,6 @@ popupAddSubmit.addEventListener('click', () => {closePopup(popupAdd)});
 
 popupImage.addEventListener('click', () => {showPopup(popupShowImage)});
 popupСloseImage.addEventListener('click', () => {closePopup(popupShowImage)});
-
-
-/*function enableValidation(formConfig){
-
-  const form = document.querySelectorall(formConfig.formSelector);
-  form.forEach((formElement) => {
-    const inputs = formElement.querySelectorAll(formConfig.inputSelector);
-    const button = formElement.querySelector(config.buttonSelector); 
-  })
-
-   
-  
-  inputs.forEach((element) => {
-    element.addEventListener('input', (event) => handleFormInput(event, form, formConfig))
-  })
-
-  form.addEventListener('submit', (event) => handleformSubmit(event, form))
-  toggleButton(form, formConfig);
-}
-
-function toggleButton(form, formConfig){
-  const button = document.querySelector(formConfig.buttonSelector);
-  button.disabled = !form.checkValidity();
-
-  button.classList.toggle('popup_disabled', !form.checkValidity());
-}
-
-function handleformSubmit(event, form){
-  event.preventDefault();
-}
-
-function handleFormInput(event, form, formConfig) {
-  const input = event.target;
-  const errorNode = document.querySelector(`.${input.id}-error`);
-
-  if(input.validity.valid){
-    errorNode.textContent = '';
-  }else{
-    errorNode.textContent = input.validationMessage;
-  }
-  toggleButton(form, formConfig);
-}
-
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  buttonSelector: '.popup__btn-form',
-});
-
-enableValidation({
-  formSelector: '.popup__form-add',
-  inputSelector: '.popup__input_name-add',
-  buttonSelector: '.popup__submit-add',
-})
-*/
 
 
 function handleProfileFormSubmit (event) {
@@ -232,10 +155,10 @@ function getElement(item) {
 function handleAddCard(evt){
 evt.preventDefault();
 
-  const inputValueName = document.querySelector('.popup__input_name-add').value;
-  const inputValueLink = document.querySelector('.popup__input_link-add').value;
+  const inputName = inputValueName.value;
+  const inputLink = inputValueLink.value;
 
-  const elementLinkName = getElement({name:inputValueName, link:inputValueLink});
+  const elementLinkName = getElement({name:inputName, link:inputLink});
   elementsBlockGrid.prepend(elementLinkName);
 
   popupFormAdd.reset();
