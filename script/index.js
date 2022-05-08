@@ -104,7 +104,6 @@ popupEditSubmit.addEventListener('click', () => {closePopup(popupEdit)});
 
 btnAddImage.addEventListener('click', () => {
   showPopup(popupAdd);
- // enableValidation(config);
 });
 
 popupCloseAdd.addEventListener('click', () => {closePopup(popupAdd)});
