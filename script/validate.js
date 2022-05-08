@@ -2,10 +2,13 @@
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__btn-form',
-    errorClass: 'popup__error',
+    inactiveButtonClass: 'popup__btn-form_disabled',
+    inputErrorClass: 'popup__input_error',
+    errorClass: 'popup__input_error-show',
 }
 
-const enableValidation = () => {
+
+function enableValidation(config) {
     // Найдём все формы с указанным классом в DOM,
     // сделаем из них массив методом Array.from
     const formList = Array.from(document.querySelectorAll(config.formSelector));
@@ -24,7 +27,7 @@ const enableValidation = () => {
     });
   };
 
-  const setEventListeners = (formElement, config) => {
+  function setEventListeners (formElement, config) {
     // Найдём все поля формы и сделаем из них массив
     const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
     
@@ -32,14 +35,14 @@ const enableValidation = () => {
     const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
     // чтобы проверить состояние кнопки в самом начале
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(config, inputList, buttonElement);
   
     inputList.forEach((inputElement, index, array) => {
       inputElement.addEventListener('input', () => {
         checkInputValidity(config, formElement, inputElement);
         
         // Вызовем toggleButtonState и передадим ей массив полей и кнопку
-        toggleButtonState(array, buttonElement);
+        toggleButtonState(config, array, buttonElement);
       });
     });
   };
@@ -60,7 +63,7 @@ const enableValidation = () => {
 const showInputError = (config, formElement, inputElement, errorMessage) => {
     // Находим элемент ошибки внутри самой функции
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    // Остальной код такой же
+    inputElement.classList.add(config.inputErrorClass);
     errorElement.classList.add(config.errorClass);
     errorElement.textContent = errorMessage;  
   };
@@ -68,7 +71,7 @@ const showInputError = (config, formElement, inputElement, errorMessage) => {
   const hideInputError = (config, formElement, inputElement) => {
     // Находим элемент ошибки
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    // Остальной код такой же
+    inputElement.classList.remove(config.inputErrorClass);
     errorElement.classList.remove(config.errorClass);
     errorElement.textContent = '';
   };
@@ -87,12 +90,12 @@ const showInputError = (config, formElement, inputElement, errorMessage) => {
     })
   };
 
-  function toggleButtonState(inputList, buttonElement){
+  function toggleButtonState(config, inputList, buttonElement){
     if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup_disabled');
+    buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove('popup_disabled');
+    buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
   }

@@ -41,12 +41,13 @@ const inputValueName = document.querySelector('.popup__input_name-add');
 const inputValueLink = document.querySelector('.popup__input_link-add');
 
 
+
 function showPopup (popapName){
   popapName.classList.add('popup_opened');
 
 document.addEventListener('keydown', handleHotkey);
 document.addEventListener('mousedown', handleOverlayClick);
-enableValidation(config);
+//enableValidation(config);
 }
 
 function closePopup(popupName) {
@@ -71,7 +72,6 @@ function handleOverlayClick(event) {
 }
 
 
-
 function insertInputValues(){
   popupNameInput.value =  profileName.textContent;
   popupJobInput.value = profileProfession.textContent;
@@ -80,14 +80,33 @@ function insertInputValues(){
 profileBtnEdit.addEventListener('click', () => {
   showPopup(popupEdit);
   insertInputValues();
+})
+
+
+
+function disableSubmitButton (button){
+  button.classList.add('popup__btn-form_disabled');
+  button.disabled = true;
+}
+
+btnAddImage.addEventListener('click', () => {
+  showPopup(popupAdd);
+  const buttonCardDisable = popupAdd.querySelector('.popup__btn-form');
+  disableSubmitButton(buttonCardDisable); 
 });
+
+
 
 
 popupCloseEdit.addEventListener('click', () => { closePopup(popupEdit)});
 
 popupEditSubmit.addEventListener('click', () => {closePopup(popupEdit)});
 
-btnAddImage.addEventListener('click', () => {showPopup(popupAdd)});
+btnAddImage.addEventListener('click', () => {
+  showPopup(popupAdd);
+ // enableValidation(config);
+});
+
 popupCloseAdd.addEventListener('click', () => {closePopup(popupAdd)});
 popupAddSubmit.addEventListener('click', () => {closePopup(popupAdd)});
 
