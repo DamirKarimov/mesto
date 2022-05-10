@@ -8,6 +8,7 @@
 }
 
 
+
 function enableValidation(config) {
     // Найдём все формы с указанным классом в DOM,
     // сделаем из них массив методом Array.from
@@ -79,7 +80,7 @@ const showInputError = (config, formElement, inputElement, errorMessage) => {
 
   // Функция принимает массив полей
 
-  const hasInvalidInput = (inputList) => {
+  function hasInvalidInput(inputList){
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
       // Если поле не валидно, колбэк вернёт true
@@ -102,4 +103,3 @@ const showInputError = (config, formElement, inputElement, errorMessage) => {
 
   // Вызовем функцию
   enableValidation(config);
-

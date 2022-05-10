@@ -40,7 +40,8 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const inputValueName = document.querySelector('.popup__input_name-add');
 const inputValueLink = document.querySelector('.popup__input_link-add');
 
-
+const buttonAddState = popupFormAdd.querySelector(config.submitButtonSelector);
+const inputsAddForm = Array.from(popupFormAdd.querySelectorAll(config.inputSelector)); 
 
 function showPopup (popapName){
   popapName.classList.add('popup_opened');
@@ -82,32 +83,17 @@ profileBtnEdit.addEventListener('click', () => {
   insertInputValues();
 })
 
-
-
-function disableSubmitButton (button){
-  button.classList.add('popup__btn-form_disabled');
-  button.disabled = true;
-}
-
-btnAddImage.addEventListener('click', () => {
-  showPopup(popupAdd);
-  const buttonCardDisable = popupAdd.querySelector('.popup__btn-form');
-  disableSubmitButton(buttonCardDisable); 
-});
-
-
-
-
 popupCloseEdit.addEventListener('click', () => { closePopup(popupEdit)});
 
 popupEditSubmit.addEventListener('click', () => {closePopup(popupEdit)});
 
-btnAddImage.addEventListener('click', () => {
-  showPopup(popupAdd);
-});
-
 popupCloseAdd.addEventListener('click', () => {closePopup(popupAdd)});
 popupAddSubmit.addEventListener('click', () => {closePopup(popupAdd)});
+
+btnAddImage.addEventListener('click', () => {
+  showPopup(popupAdd);
+  toggleButtonState(config, inputsAddForm, buttonAddState);
+});
 
 popupImage.addEventListener('click', () => {showPopup(popupShowImage)});
 popupСloseImage.addEventListener('click', () => {closePopup(popupShowImage)});
