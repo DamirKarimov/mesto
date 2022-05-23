@@ -29,7 +29,7 @@
 
         <footer class="footer">
           <p class="footer__copyright">
-            © 2020 Mesto Russia
+            © 2022 Mesto Russia
           </p>
         </footer>
 
@@ -38,7 +38,7 @@
             <button type="button" class="popup__close-edit popup__close"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
 
-            <form class="popup__form" name="form" action="index.html" method="post" novalidate>
+            <form class="popup__form popup__form-edit" name="form" action="index.html" method="post" novalidate>
               
               <input 
                 type="text" 
@@ -130,9 +130,8 @@
           </article>
         </template>
 
-       <script src="./script/validate.js"></script> 
-        <script src="./script/card.js"></script>
-        <script src="./script/index.js"></script>
-        
+       <script  type="module" src="./script/FormValidator.js"></script> 
+        <script type="module" src="./script/card.js"></script>
+        <script type="module" src="./script/index.js"></script>       
     </body>
 </html>
