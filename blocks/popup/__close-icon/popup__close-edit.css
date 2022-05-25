@@ -9,7 +9,7 @@
   background-color: rgba(0,0,0,0);
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: url(../../../images/cursor.png), pointer;
+  cursor: pointer;
 }
 
 .popup__close-edit:hover {

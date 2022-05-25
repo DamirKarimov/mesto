@@ -2,7 +2,7 @@
   border: 1px solid #FFFFFF;
   background-color: #000000;
   box-sizing: border-box;
-  cursor: url(../../../images/cursor.png), pointer;
+  cursor: pointer;
 }
 
 .profile__btn:hover {

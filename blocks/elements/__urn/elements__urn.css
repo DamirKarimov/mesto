@@ -12,6 +12,7 @@
   margin: 0;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 .elements__urn:nth-child(1){

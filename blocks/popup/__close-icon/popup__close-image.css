@@ -10,7 +10,7 @@
   border: none;
   background-color: rgba(0, 0, 0, .9);
   align-self: flex-end;
-  cursor: url(../../../images/cursor.png), pointer;
+  cursor: pointer;
 }
 
 

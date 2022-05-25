@@ -33,13 +33,8 @@ export const initialCards = [
     inputErrorClass: 'popup__input_error',
     errorClass: 'popup__input_error-show',
 }
-  
-export const popups = document.querySelectorAll('.popup')
-  
-export const popupContainerEdit = document.querySelector('.popup__container_edit');
-  
+
 export const popupForm = document.querySelector('.popup__form');
-export const popupInput = document.querySelector('.popup__input');
   
 export const popupNameInput = popupForm.querySelector('.popup__name-input');
 export const popupJobInput = popupForm.querySelector('.popup__job-input');
@@ -59,23 +54,17 @@ export const popupImage = document.querySelector('.popup__image');
   
 export const popupAddSubmit = document.querySelector('.popup__submit-add');
 export const popupEditSubmit = document.querySelector('.popup__submit-edit');
-  
+
 export const popupInputNameAdd = document.querySelector('.popup__input_name-add');
 export const popupInputLinkAdd = document.querySelector('.popup__input_link-add');
   
 export const popupFormEdit = document.querySelector('.popup__form-edit');
 export const popupFormAdd = document.querySelector('.popup__form-add');
-export const popupContainerAdd = document.querySelector('.popup__container_add');
-export const popupContainerImage = document.querySelector('.popup__container-image')
-  
+
 export const popupShowImage = document.querySelector('.popup_show-image');
 export const popupImageDescription = document.querySelector('.popup__image-description');
   
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
-  
-export const inputValueName = document.querySelector('.popup__input_name-add');
-export const inputValueLink = document.querySelector('.popup__input_link-add');
-  
+   
 export const elementsBlockGrid = document.querySelector(".elements");
-export const templateElem = document.querySelector('.template');

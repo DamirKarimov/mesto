@@ -1,12 +1,10 @@
 import { 
-  initialCards, config, popups, popupContainerEdit, popupForm, popupInput,
-  popupNameInput, popupJobInput, profileBtnEdit, btnAddImage, profileName,
-  profileProfession, popupCloseEdit, popupCloseAdd, popupСloseImage,
-  popupEdit, popupAdd, popupImage, popupAddSubmit, popupEditSubmit,
-  popupInputNameAdd, popupInputLinkAdd, popupFormEdit, popupFormAdd,
-  popupContainerAdd, popupContainerImage, popupShowImage, popupImageDescription,
-  profileTitle, profileSubtitle, inputValueName, inputValueLink,
-  elementsBlockGrid, templateElem
+  initialCards, config, popupNameInput, popupJobInput, 
+  profileBtnEdit, btnAddImage, profileName, profileProfession, 
+  popupCloseEdit, popupCloseAdd, popupСloseImage, popupEdit, 
+  popupAdd, popupImage, popupAddSubmit, popupEditSubmit, popupFormEdit,
+  popupFormAdd,popupShowImage, profileTitle, profileSubtitle, elementsBlockGrid,
+  popupInputNameAdd, popupInputLinkAdd
  } from './const.js'; 
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
@@ -21,7 +19,7 @@ export function showPopup (popapName){
   popapName.classList.add('popup_opened');
 
 document.addEventListener('keydown', handleHotkey);
-document.addEventListener('mousedown', handleOverlayClick);
+popapName.addEventListener('mousedown', handleOverlayClick);
 }
 
 function closePopup(popupName) {
@@ -56,21 +54,22 @@ profileBtnEdit.addEventListener('click', () => {
   showPopup(popupEdit);
   insertInputValues();
 })
-popupCloseEdit.addEventListener('click', () => { closePopup(popupEdit)});
-popupEditSubmit.addEventListener('click', () => {closePopup(popupEdit)});
+popupCloseEdit.addEventListener('click', () =>  closePopup(popupEdit));
+popupEditSubmit.addEventListener('click', () => closePopup(popupEdit));
 
 
 btnAddImage.addEventListener('click', () => {
   showPopup(popupAdd);
-  validatePhoto.toggleButtonState();
-  //toggleButtonState(config, inputsAddForm, buttonAddState);
+  validPhoto.toggleButtonState();
 });
-popupCloseAdd.addEventListener('click', () => {closePopup(popupAdd)});
-popupAddSubmit.addEventListener('click', () => {closePopup(popupAdd)});
 
 
-popupImage.addEventListener('click', () => {showPopup(popupShowImage)});
-popupСloseImage.addEventListener('click', () => {closePopup(popupShowImage)});
+popupCloseAdd.addEventListener('click', () => closePopup(popupAdd));
+popupAddSubmit.addEventListener('click', () => closePopup(popupAdd));
+
+
+popupImage.addEventListener('click', () => showPopup(popupShowImage));
+popupСloseImage.addEventListener('click', () => closePopup(popupShowImage));
 
 
 function handleProfileFormSubmit (event) {
@@ -78,9 +77,25 @@ function handleProfileFormSubmit (event) {
 
     profileTitle.textContent = popupNameInput.value;
     profileSubtitle.textContent = popupJobInput.value;
+    
 }
 
-popupForm.addEventListener('submit', handleProfileFormSubmit);
+function handlePhotoFormSubmit (event) {
+  event.preventDefault();
+
+  const data = {};
+  data.name = popupInputNameAdd.value;
+  data.link = popupInputLinkAdd.value;
+
+  popupFormAdd.reset();
+  validPhoto.toggleButtonState();
+
+  closePopup(popupAdd)
+}
+
+
+popupFormAdd.addEventListener('submit', handlePhotoFormSubmit);
+popupFormEdit.addEventListener('submit', handleProfileFormSubmit);
 
 
 function createCard(item) {
