@@ -87,6 +87,9 @@ function handlePhotoFormSubmit (event) {
   data.name = popupInputNameAdd.value;
   data.link = popupInputLinkAdd.value;
 
+  const newCard = createCard(data);
+  elementsBlockGrid.prepend(newCard);
+
   popupFormAdd.reset();
   validPhoto.toggleButtonState();
 
@@ -106,7 +109,7 @@ function createCard(item) {
 
 initialCards.forEach((item) => {
 	const cardElement = createCard(item);
-	elementsBlockGrid.prepend(cardElement);
+	elementsBlockGrid.append(cardElement);
 });
 
 

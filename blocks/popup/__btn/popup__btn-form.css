@@ -15,18 +15,13 @@
     cursor: pointer;
   }
   
-  /*.popup__btn-form:hover {
-    background: rgba(0,0,0,.8);
-  }*/
-  
-  
   @media screen and (min-width: 320px) and (max-width: 767px) {
     .popup__btn-form {
       width: 238px;
       height: 46px;
       font-size: 14px;
       line-height: 17px;
-      margin: 45px 0 0 22px;
+      margin: 15px 0 0 22px;
     }
   }
   
