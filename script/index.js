@@ -15,8 +15,8 @@ const validPhoto = new FormValidator(config, popupFormAdd);
 validProfile.enableValidation();
 validPhoto.enableValidation();
 
-export function showPopup (popapName){
-  popapName.classList.add('popup_opened');
+export function showPopup (popupName){
+  popupName.classList.add('popup_opened');
 
 document.addEventListener('keydown', handleHotkey);
 popapName.addEventListener('mousedown', handleOverlayClick);
