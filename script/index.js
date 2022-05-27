@@ -16,18 +16,17 @@ validProfile.enableValidation();
 validPhoto.enableValidation();
 
 export function showPopup (popupName){
-  popupName.classList.add('popup_opened');
-
+popupName.classList.add('popup_opened');
 document.addEventListener('keydown', handleHotkey);
-popapName.addEventListener('mousedown', handleOverlayClick);
+popupName.addEventListener('mousedown', handleOverlayClick);
 }
 
 function closePopup(popupName) {
 popupName.classList.remove('popup_opened');
-
 document.removeEventListener('keydown', handleHotkey);
-document.removeEventListener('click', handleOverlayClick);
 }
+
+document.removeEventListener('click', handleOverlayClick);
 
 function handleHotkey(event) {
 
