@@ -34,6 +34,7 @@ export const initialCards = [
     errorClass: 'popup__input_error-show',
 }
 
+export const popups = document.querySelectorAll('.popup');
 export const popupForm = document.querySelector('.popup__form');
   
 export const popupNameInput = popupForm.querySelector('.popup__name-input');

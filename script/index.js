@@ -1,5 +1,5 @@
 import { 
-  initialCards, config, popupNameInput, popupJobInput, 
+  popups, initialCards, config, popupNameInput, popupJobInput, 
   profileBtnEdit, btnAddImage, profileName, profileProfession, 
   popupCloseEdit, popupCloseAdd, popupСloseImage, popupEdit, 
   popupAdd, popupImage, popupAddSubmit, popupEditSubmit, popupFormEdit,
@@ -18,7 +18,6 @@ validPhoto.enableValidation();
 export function showPopup (popupName){
 popupName.classList.add('popup_opened');
 document.addEventListener('keydown', handleHotkey);
-popupName.addEventListener('mousedown', handleOverlayClick);
 }
 
 function closePopup(popupName) {
@@ -26,7 +25,7 @@ popupName.classList.remove('popup_opened');
 document.removeEventListener('keydown', handleHotkey);
 }
 
-document.removeEventListener('click', handleOverlayClick);
+popups.forEach(popup => popup.addEventListener('mousedown', handleOverlayClick)) 
 
 function handleHotkey(event) {
 
